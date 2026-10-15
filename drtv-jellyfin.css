@@ -1,0 +1,195 @@
+/* =========================================================
+   DRTV-look (lyst, minimalistisk) til Jellyfin 12
+   Indsæt i: Dashboard → Branding → Custom CSS
+   Dækker både 12's nye MUI-skal og de klassiske klasser.
+   ========================================================= */
+:root{
+  --dr-bg:#fff; --dr-text:#111; --dr-muted:#6b6b6b;
+  --dr-line:#e3e1df; --dr-soft:#f0efee; --dr-red:#e8312f;
+  --dr-font:"Inter","Helvetica Neue",Arial,sans-serif;
+}
+
+/* Jellyfins egen palet vendes til lys – virker uanset valgt tema (dark/light/…) */
+:root[data-theme],:root:not([data-theme]){
+  color-scheme:light; color:var(--dr-text);
+  --jf-shape-borderRadius:0px; --jf-card-borderRadius:0;
+  --jf-palette-background-default:#fff; --jf-palette-background-paper:#fff;
+  --jf-palette-background-defaultChannel:255 255 255; --jf-palette-background-paperChannel:255 255 255;
+  --jf-palette-common-background:#fff; --jf-palette-common-onBackground:#111;
+  --jf-palette-common-backgroundChannel:255 255 255; --jf-palette-common-onBackgroundChannel:17 17 17;
+  --jf-palette-text-primary:#111; --jf-palette-text-secondary:#6b6b6b;
+  --jf-palette-text-disabled:#9a9a9a; --jf-palette-text-icon:#6b6b6b;
+  --jf-palette-text-primaryChannel:17 17 17; --jf-palette-text-secondaryChannel:107 107 107;
+  --jf-palette-divider:#e3e1df; --jf-palette-dividerChannel:227 225 223;
+  --jf-palette-primary-main:#e8312f; --jf-palette-primary-light:#ee5a58; --jf-palette-primary-dark:#c92725;
+  --jf-palette-primary-contrastText:#fff; --jf-palette-primary-mainChannel:232 49 47;
+  --jf-palette-primary-lightChannel:238 90 88; --jf-palette-primary-darkChannel:201 39 37;
+  --jf-palette-primary-contrastTextChannel:255 255 255;
+  --jf-palette-secondary-main:#e8312f; --jf-palette-secondary-light:#ee5a58; --jf-palette-secondary-dark:#c92725;
+  --jf-palette-secondary-contrastText:#fff; --jf-palette-secondary-mainChannel:232 49 47;
+  --jf-palette-secondary-lightChannel:238 90 88; --jf-palette-secondary-darkChannel:201 39 37;
+  --jf-palette-secondary-contrastTextChannel:255 255 255;
+  --jf-palette-action-active:#111; --jf-palette-action-hover:#f0efee; --jf-palette-action-hoverOpacity:.06;
+  --jf-palette-action-selected:rgba(17,17,17,.08); --jf-palette-action-focus:#e3e1df;
+  --jf-palette-action-disabled:rgba(17,17,17,.3); --jf-palette-action-disabledBackground:rgba(17,17,17,.12);
+  --jf-palette-action-activeChannel:17 17 17; --jf-palette-action-selectedChannel:17 17 17;
+  --jf-palette-AppBar-defaultBg:#fff; --jf-palette-AppBar-transparentBg:rgba(255,255,255,.92);
+  --jf-palette-Button-inheritContainedBg:#f0efee; --jf-palette-Button-inheritContainedHoverBg:#e3e1df;
+  --jf-palette-FilledInput-bg:#fff; --jf-palette-FilledInput-hoverBg:#f6f5f4;
+  --jf-palette-FilledInput-disabledBg:#f0efee; --jf-palette-FilledInput-borderColor:#111;
+  --jf-palette-SnackbarContent-bg:#111; --jf-palette-SnackbarContent-color:#fff;
+  --jf-palette-TableCell-border:#e3e1df; --jf-palette-Skeleton-bg:rgba(17,17,17,.08);
+  --jf-palette-LinearProgress-primaryBg:#f6c1c0; --jf-palette-LinearProgress-secondaryBg:#f6c1c0;
+  --jf-palette-Slider-primaryTrack:#f6c1c0; --jf-palette-Slider-secondaryTrack:#f6c1c0;
+  --jf-palette-Alert-errorStandardBg:#fdeded; --jf-palette-Alert-errorColor:#5f2120;
+  --jf-palette-Alert-infoStandardBg:#e5f6fd; --jf-palette-Alert-infoColor:#014361;
+  --jf-palette-Alert-successStandardBg:#edf7ed; --jf-palette-Alert-successColor:#1e4620;
+  --jf-palette-Alert-warningStandardBg:#fff4e5; --jf-palette-Alert-warningColor:#663c00;
+}
+
+html,body,.backgroundContainer,.backgroundContainer.withBackdrop,
+.skinBody,.page,.libraryPage,.homePage,.detailPageContent{
+  background:var(--dr-bg)!important; color:var(--dr-text); font-family:var(--dr-font)!important;
+}
+.backdropContainer{display:none}
+::selection{background:var(--dr-red);color:#fff}
+
+/* Topbar */
+.skinHeader,.skinHeader.semiTransparent{
+  background:var(--dr-bg)!important; border-bottom:1px solid var(--dr-line)!important;
+  box-shadow:none!important; backdrop-filter:none;
+}
+.headerButton,.headerTabs .emby-tab-button{color:var(--dr-text)!important;font-weight:500}
+.emby-tab-button{opacity:1}
+.emby-tab-button-active,.emby-tab-button-active:hover{
+  font-weight:800!important; border-bottom:3px solid var(--dr-text)!important;
+}
+
+/* Sidemenu */
+.mainDrawer{background:var(--dr-bg)!important;border-right:1px solid var(--dr-line)}
+.navMenuOption{border-radius:0;margin:0;text-transform:uppercase;font-weight:600;border-bottom:1px solid var(--dr-line);color:var(--dr-text)!important}
+.navMenuOption:hover,.navMenuOption-selected{background:var(--dr-soft)!important;box-shadow:none}
+.navMenuOption-selected{font-weight:800}
+
+/* Sektioner */
+.sectionTitle,.sectionTitle-cards,h2.sectionTitle{
+  font-size:1.6rem!important;font-weight:800!important;letter-spacing:-.01em;color:var(--dr-text)!important;
+}
+.sectionTitleButton,.sectionTitleLink{color:var(--dr-text)!important}
+.verticalSection{margin-bottom:1.4rem}
+
+/* Kort: firkantede plakater, ingen effekter */
+.cardScalable,.cardImageContainer,.cardOverlayContainer{border-radius:0!important}
+.cardScalable{background:var(--dr-soft);transition:opacity .15s}
+.card:hover .cardScalable{opacity:.85}
+.cardBox{margin:0 .3em .6em}
+.cardText{color:var(--dr-text)!important;font-weight:700;font-size:1rem}
+.cardText-secondary{color:var(--dr-muted)!important;font-weight:400;font-size:.9rem}
+.cardOverlayContainer{background:rgba(255,255,255,.35)!important}
+.cardOverlayFab-primary{background:var(--dr-red)!important;color:#fff!important;border-radius:0}
+
+/* Badges: sort mærkat som "Ny sæson" */
+.countIndicator,.playedIndicator{
+  background:#000!important;color:#fff!important;border-radius:0;font-weight:600;
+}
+.itemProgressBar{height:3px!important;background:var(--dr-line)!important;border-radius:0!important}
+.itemProgressBarForeground{background:var(--dr-red)!important}
+
+/* Knapper: rød primær, sort kant sekundær */
+.button-submit,.raised.button-submit,.btnPlay,.btnResume{
+  background:var(--dr-red)!important;color:#fff!important;border-radius:0!important;
+  text-transform:uppercase;font-weight:800;padding:.8em 1.6em;
+}
+.button-submit:hover,.btnPlay:hover,.btnResume:hover{background:#c92725!important}
+.btnPlay .material-icons,.btnResume .material-icons{color:#fff!important}
+.detailButton,.button-flat,.raised:not(.button-submit){
+  background:transparent!important;color:var(--dr-text)!important;
+  border:2px solid var(--dr-text)!important;border-radius:0!important;
+  text-transform:uppercase;font-weight:800;
+}
+.detailButton:hover,.button-flat:hover{background:var(--dr-text)!important;color:#fff!important}
+
+/* Detaljeside */
+.detailRibbon{background:transparent!important;border:0}
+.itemName,.parentNameLast{font-size:clamp(1.8rem,4vw,3rem)!important;font-weight:800!important;letter-spacing:-.02em}
+.overview,.itemMiscInfo,.mediaInfoItem{color:var(--dr-muted)}
+.mediaInfoItem{background:none;border:0;border-radius:0;padding:0 .6em 0 0;margin-right:.6em;border-right:1px solid var(--dr-muted);line-height:1}
+.mediaInfoItem:last-child{border-right:0}
+.detailImageContainer .cardImageContainer{box-shadow:none}
+
+/* Inputs / dialoger */
+.emby-input,.emby-select,.emby-textarea{
+  background:var(--dr-bg)!important;border:2px solid var(--dr-text)!important;border-radius:0!important;color:var(--dr-text)!important;
+}
+.emby-input:focus,.emby-select:focus{border-color:var(--dr-red)!important}
+.dialog,.actionSheetContent,.formDialogContent,.paperList{
+  background:var(--dr-bg)!important;color:var(--dr-text);border-radius:0!important;box-shadow:0 8px 30px rgba(0,0,0,.18);
+}
+.listItem:hover,.actionSheetMenuItem:hover{background:var(--dr-soft)!important}
+
+/* Afspiller forbliver mørk */
+.videoOsdBottom{background:linear-gradient(to top,rgba(0,0,0,.85),transparent)!important}
+.mdl-slider-background-lower,.emby-slider-background-lower,.sliderBubble{background:var(--dr-red)!important}
+
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-thumb{background:#cfcdcb}
+::-webkit-scrollbar-track{background:transparent}
+
+@media(max-width:640px){.sectionTitle{font-size:1.35rem!important}}
+
+/* ---------- Rettelser ---------- */
+/* Logo: Jellyfins eget/server-sat logo bruges uændret.
+   Standardlogoet har hvid tekst (til mørk baggrund) → vendes så det kan ses på hvid.
+   Ser farverne forkerte ud: skift til  filter:brightness(0);  */
+.pageTitleWithDefaultLogo{filter:invert(1) hue-rotate(180deg)}
+
+/* Tekst der ellers kan blive hvid på hvid (indstillinger/dashboard) */
+.content-primary,.listItemBodyText,.inputLabel,.selectLabel,.textareaLabel,
+.emby-checkbox-label,.checkboxLabel,.detailSectionHeader{color:var(--dr-text)!important}
+.fieldDescription,.listItemBodyText-secondary,.secondary{color:var(--dr-muted)!important}
+.cardOverlayContainer{background:rgba(0,0,0,.45)!important}
+
+/* Afspiller: header og kontroller skal forblive mørke med hvid tekst */
+.skinHeader.osdHeader{background:linear-gradient(rgba(0,0,0,.7),transparent)!important;border:0!important}
+.osdHeader .headerButton,.osdHeader .pageTitle,.videoOsdBottom,.videoOsdBottom *{color:#fff!important}
+
+/* ============ Jellyfin 12: ny MUI-skal ============ */
+header.MuiAppBar-root{
+  background:var(--dr-bg)!important; background-image:none!important; color:var(--dr-text)!important;
+  border-bottom:1px solid var(--dr-line); box-shadow:none!important;
+}
+header.MuiAppBar-root .MuiButton-root,header.MuiAppBar-root .MuiIconButton-root{color:var(--dr-text)}
+header.MuiAppBar-root .MuiButton-sizeMedium{text-transform:uppercase;font-weight:600;letter-spacing:.01em}
+header.MuiAppBar-root .MuiButton-sizeLarge{font-weight:800}
+/* Afspiller: header forbliver mørk over videoen */
+body:has(#videoOsdPage:not(.hide)) header.MuiAppBar-root{
+  background:linear-gradient(rgba(0,0,0,.7),transparent)!important;border:0;color:#fff!important}
+body:has(#videoOsdPage:not(.hide)) header.MuiAppBar-root .MuiButton-root,
+body:has(#videoOsdPage:not(.hide)) header.MuiAppBar-root .MuiIconButton-root{color:#fff}
+
+/* Menuer, sidemenu, dialoger */
+.MuiPaper-root{background-image:none!important}
+.MuiMenu-paper,.MuiPopover-paper,.MuiDrawer-paper,.MuiDialog-paper{
+  background-color:var(--dr-bg)!important;color:var(--dr-text)!important;
+  border-radius:0!important;box-shadow:0 8px 30px rgba(0,0,0,.16)!important}
+.MuiDrawer-paper{border-right:1px solid var(--dr-line)}
+.MuiMenuItem-root,.MuiListItemButton-root{
+  text-transform:uppercase;font-weight:600;border-radius:0!important;
+  border-bottom:1px solid var(--dr-line);min-height:52px}
+.MuiMenuItem-root .MuiTypography-root,.MuiListItemButton-root .MuiTypography-root{font-weight:inherit}
+.MuiMenuItem-root.Mui-selected,.MuiListItemButton-root.Mui-selected{background:var(--dr-soft)!important;font-weight:800}
+.MuiListSubheader-root{text-transform:uppercase;font-weight:800;color:var(--dr-muted);background:transparent}
+.MuiListItemIcon-root{color:var(--dr-text)}
+
+/* Knapper og felter (indstillinger m.m.) */
+.MuiButton-contained,.MuiButton-outlined{text-transform:uppercase;font-weight:800;box-shadow:none}
+.MuiButton-outlined{border:2px solid var(--dr-text)!important;color:var(--dr-text)!important}
+.MuiFilledInput-root,.MuiOutlinedInput-root{
+  background:#fff!important;border:2px solid var(--dr-text)!important;border-radius:0!important}
+.MuiFilledInput-root:focus-within,.MuiOutlinedInput-root:focus-within{border-color:var(--dr-red)!important}
+.MuiFilledInput-root::before,.MuiFilledInput-root::after{display:none!important}
+.MuiOutlinedInput-notchedOutline{border:0!important}
+.MuiInputLabel-root{color:var(--dr-muted)}
+.MuiChip-root{border-radius:0}
+.MuiButton-root,.MuiTypography-root,.MuiListItemText-root,.MuiMenuItem-root,
+.MuiListSubheader-root,.MuiInputBase-root{font-family:var(--dr-font)!important}
