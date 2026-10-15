@@ -193,3 +193,22 @@ body:has(#videoOsdPage:not(.hide)) header.MuiAppBar-root .MuiIconButton-root{col
 .MuiChip-root{border-radius:0}
 .MuiButton-root,.MuiTypography-root,.MuiListItemText-root,.MuiMenuItem-root,
 .MuiListSubheader-root,.MuiInputBase-root{font-family:var(--dr-font)!important}
+
+/* Pladsholder bag kort uden billede */
+.cardPadder,.defaultCardBackground1,.defaultCardBackground2,.defaultCardBackground3,
+.defaultCardBackground4,.defaultCardBackground5{background-color:var(--dr-soft)!important}
+
+/* Mobil: header kan scrolles i stedet for at løbe ud over skærmen; ingen kortskygge */
+header.MuiAppBar-root .MuiButton-root{white-space:nowrap}
+header.MuiAppBar-root .MuiToolbar-root{min-width:0}
+header.MuiAppBar-root .MuiToolbar-root>.MuiStack-root:first-of-type{flex:1 1 auto;min-width:0;overflow-x:auto;scrollbar-width:none}
+header.MuiAppBar-root .MuiToolbar-root>.MuiStack-root:first-of-type::-webkit-scrollbar{display:none}
+.cardBox,.cardScalable{box-shadow:none!important}
+header.MuiAppBar-root .MuiToolbar-root>*:not(:first-child){flex:0 0 auto;flex-wrap:nowrap;white-space:nowrap}
+
+/* Kort-tekst venstrejusteret som på DRTV */
+.cardTextCentered,.cardTextCentered>.textActionButton{text-align:left!important}
+.cardText{padding-left:0}
+
+/* Mobil: tre plakater på bredden som på DRTV */
+.layout-mobile .overflowPortraitCard{width:30vw!important}
