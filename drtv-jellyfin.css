@@ -1,3 +1,4 @@
+/* DRTV-tema v3 · 2026-10-16 – står denne linje øverst i din fil, kører du den nyeste version */
 /* =========================================================
    DRTV-look (lyst, minimalistisk) til Jellyfin 12
    Indsæt i: Dashboard → Branding → Custom CSS
@@ -226,8 +227,11 @@ header.MuiAppBar-root .MuiToolbar-root>*:not(:first-child){flex:0 0 auto;flex-wr
 /* ============ Media Bar-plugin → DRTV-hero ============ */
 :root{
   --slideshow-height:min(60vh,620px); --slideshow-content-top:var(--slideshow-height);
-  --slideshow-dots-reserve:0px; --slideshow-font:var(--dr-font);
-  --slideshow-bottom-fade:linear-gradient(#000,#000); /* slår bundtoningen fra */
+}
+html:root{ /* højere specificitet + !important, så pluginets egne værdier ikke vinder */
+  --slideshow-height:min(60vh,620px)!important; --slideshow-content-top:min(60vh,620px)!important;
+  --slideshow-dots-reserve:0px!important; --slideshow-font:var(--dr-font)!important;
+  --slideshow-bottom-fade:linear-gradient(#000,#000)!important; /* slår bundtoningen fra */
 }
 #slides-container .backdrop,#slides-container .backdrop-overlay{border-radius:0!important}
 #slides-container .backdrop-overlay{background:transparent!important}
@@ -275,3 +279,11 @@ header.MuiAppBar-root .MuiToolbar-root>*:not(:first-child){flex:0 0 auto;flex-wr
 #slides-container .dot.active{background:var(--dr-red)!important;width:2rem!important}
 .bar-loading{background:#fff!important}.bar-loading .progress-bar{background:var(--dr-red)!important}
 @media(max-width:767px){#slides-container .slide-content{left:0!important;width:100%!important;padding:1rem 1.2rem 1.2rem!important}}
+
+/* Ikon-ligaturer (play_arrow m.fl.) må ikke blive til store bogstaver */
+.play-button::before,.detail-button::before,.favorite-button::before,.favorite-button.favorited::before,
+[class*="material-icons"],.material-icons::before{text-transform:none!important;letter-spacing:normal!important}
+/* Sektionstitler der er links ("Næste ›", "Nyligt tilføjet i Film ›"): aldrig boks eller store bogstaver */
+body .sectionTitleContainer :is(a,button,.emby-button,.button-flat,.raised,.detailButton){
+  border:0!important;background:transparent!important;box-shadow:none!important;text-transform:none!important;
+  padding:0 .3em 0 0!important;color:var(--dr-text)!important;font-weight:800}
