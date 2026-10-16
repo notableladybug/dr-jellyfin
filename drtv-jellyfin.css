@@ -102,12 +102,13 @@ html,body,.backgroundContainer,.backgroundContainer.withBackdrop,
 }
 .button-submit:hover,.btnPlay:hover,.btnResume:hover{background:#c92725!important}
 .btnPlay .material-icons,.btnResume .material-icons{color:#fff!important}
-.detailButton,.button-flat,.raised:not(.button-submit){
+.detailButton,.raised:not(.button-submit){
   background:transparent!important;color:var(--dr-text)!important;
   border:2px solid var(--dr-text)!important;border-radius:0!important;
   text-transform:uppercase;font-weight:800;
 }
-.detailButton:hover,.button-flat:hover{background:var(--dr-text)!important;color:#fff!important}
+.detailButton:hover{background:var(--dr-text)!important;color:#fff!important}
+.button-flat:hover{background:transparent!important;color:var(--dr-red)!important}
 
 /* Detaljeside */
 .detailRibbon{background:transparent!important;border:0}
@@ -212,3 +213,65 @@ header.MuiAppBar-root .MuiToolbar-root>*:not(:first-child){flex:0 0 auto;flex-wr
 
 /* Mobil: tre plakater på bredden som på DRTV */
 .layout-mobile .overflowPortraitCard{width:30vw!important}
+
+
+/* ===== Rettelser: "Næste ›"-titlen uden boks, ingen skygger på kort ===== */
+.sectionTitleTextButton,.sectionTitleContainer a.emby-button{
+  border:0!important;background:transparent!important;box-shadow:none!important;
+  text-transform:none!important;padding:0 .3em 0 0!important;color:var(--dr-text)!important}
+.sectionTitleTextButton:hover{background:transparent!important;color:var(--dr-text)!important}
+.sectionTitleTextButton .sectionTitle{text-transform:none!important}
+.card .cardBox,.cardScalable,.cardContent,.cardImageContainer,.cardPadder,.visualCardBox,.cardContent-shadow{box-shadow:none!important}
+
+/* ============ Media Bar-plugin → DRTV-hero ============ */
+:root{
+  --slideshow-height:min(60vh,620px); --slideshow-content-top:var(--slideshow-height);
+  --slideshow-dots-reserve:0px; --slideshow-font:var(--dr-font);
+  --slideshow-bottom-fade:linear-gradient(#000,#000); /* slår bundtoningen fra */
+}
+#slides-container .backdrop,#slides-container .backdrop-overlay{border-radius:0!important}
+#slides-container .backdrop-overlay{background:transparent!important}
+#slides-container .gradient-overlay{background:linear-gradient(to top,rgba(0,0,0,.28),transparent 45%)!important}
+/* rød label øverst til venstre */
+#slides-container .slide::before{
+  content:"Udvalgt";position:absolute;top:1.4rem;left:var(--slideshow-gutter);z-index:6;
+  background:var(--dr-red);color:#fff;font:800 1rem/1 var(--dr-font);padding:.6rem .85rem}
+/* hvid titelboks nederst til venstre */
+#slides-container .slide-content{
+  left:var(--slideshow-gutter)!important;bottom:0!important;width:min(56%,44rem)!important;
+  max-height:none!important;overflow:visible!important;gap:.7rem!important;
+  background:#fff!important;color:var(--dr-text)!important;padding:1.3rem 1.8rem 1.5rem!important;
+  border-radius:0!important;box-sizing:border-box!important;min-width:0!important}
+#slides-container .logo-container{height:auto!important;max-height:6.5rem}
+#slides-container .logo{filter:brightness(0)!important;max-height:6.5rem}
+#slides-container .info-container,#slides-container .misc-info,#slides-container .genre,
+#slides-container .runTime,#slides-container .tagline,#slides-container .spec-line,
+#slides-container .spec-item,#slides-container .spec-label,#slides-container .spec-value,
+#slides-container .separator-icon,#slides-container .star-rating-container{
+  color:var(--dr-text)!important;font-family:var(--dr-font)!important}
+#slides-container .plot{color:#444!important}
+#slides-container .spec-rail,#slides-container .spec-divider{background:var(--dr-line)!important}
+#slides-container .spec-progress{background:var(--dr-red)!important}
+#slides-container .spec-cert{border-color:var(--dr-text)!important;border-radius:0!important}
+#slides-container .age-rating{background:var(--dr-text)!important;color:#fff!important;border-radius:0!important}
+/* knapper */
+#slides-container .play-button{
+  background:var(--dr-red)!important;color:#fff!important;border-radius:0!important;
+  text-transform:uppercase;font-weight:800}
+#slides-container .play-button:hover{background:#c92725!important}
+#slides-container .detail-button,#slides-container .favorite-button{
+  background:transparent!important;color:var(--dr-text)!important;
+  border:2px solid var(--dr-text)!important;border-radius:0!important}
+#slides-container .detail-button:hover,#slides-container .favorite-button:hover{
+  background:var(--dr-text)!important;color:#fff!important}
+#slides-container .favorite-button.favorited{color:var(--dr-red)!important;border-color:var(--dr-red)!important}
+/* pile og prikker */
+#slides-container .arrow{background:transparent!important;border-radius:0!important;width:auto!important;height:auto!important;
+  color:#fff!important;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+#slides-container .arrow i{font-size:3.4rem!important}
+#slides-container .dots-container{left:auto!important;right:var(--slideshow-gutter)!important;bottom:1.2rem!important}
+#slides-container .dot{border-radius:0!important;width:.9rem!important;height:.35rem!important;
+  background:rgba(255,255,255,.7)!important;transform:none!important;margin:0 .2rem!important}
+#slides-container .dot.active{background:var(--dr-red)!important;width:2rem!important}
+.bar-loading{background:#fff!important}.bar-loading .progress-bar{background:var(--dr-red)!important}
+@media(max-width:767px){#slides-container .slide-content{left:0!important;width:100%!important;padding:1rem 1.2rem 1.2rem!important}}
